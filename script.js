@@ -27,6 +27,16 @@ console.log(squares)
 let reset = document.querySelector('#reset')
 console.log(reset)
 
+let box1 = document.querySelector('#box1')
+let box2 = document.querySelector('#box2')
+let box3 = document.querySelector('#box3')
+let box4 = document.querySelector('#box4')
+let box5 = document.querySelector('#box5')
+let box6 = document.querySelector('#box6')
+let box7 = document.querySelector('#box7')
+let box8 = document.querySelector('#box8')
+let box9 = document.querySelector('#box9')
+
 squares.forEach(square => {
     square.addEventListener('click', assignClass)
 })
@@ -39,14 +49,15 @@ function assignClass() {
         playerO = true
         moves -= 1
         console.log(moves)
-    } else if (playerO & moves > 0) {
+    } else if (playerO && moves > 0) {
         this.classList.add('playerO')
         this.innerHTML = 'O'
         playerO = false
         playerX = true
         moves -= 1
         console.log(moves)
-    }    
+    }
+    checkWinner();    
 }
 
 reset.addEventListener('click', resetGame)
@@ -61,4 +72,58 @@ function resetGame() {
     playerO = false
     moves = 9
     console.log(`Reset. Moves: ${moves}, PlayerX: ${playerX}, PlayerO: ${playerO}`)
+}
+
+function checkWinner() {
+    switch(true && moves > 0) {
+        case box1.classList.contains('playerX') && box2.classList.contains('playerX') && box3.classList.contains('playerX'): 
+        console.log(`player X wins`);
+        break; 
+        case box1.classList.contains('playerO') && box2.classList.contains('playerO') && box3.classList.contains('playerO'): 
+        console.log(`player O wins`);
+        break;
+        case box4.classList.contains('playerX') && box5.classList.contains('playerX') && box6.classList.contains('playerX'): 
+        console.log(`player X wins`);
+        break; 
+        case box4.classList.contains('playerO') && box5.classList.contains('playerO') && box6.classList.contains('playerO'): 
+        console.log(`player O wins`);
+        break;
+        case box7.classList.contains('playerX') && box8.classList.contains('playerX') && box9.classList.contains('playerX'): 
+        console.log(`player X wins`);
+        break; 
+        case box7.classList.contains('playerO') && box8.classList.contains('playerO') && box9.classList.contains('playerO'): 
+        console.log(`player O wins`);
+        break;
+        case box1.classList.contains('playerX') && box4.classList.contains('playerX') && box7.classList.contains('playerX'): 
+        console.log(`player X wins`);
+        break; 
+        case box1.classList.contains('playerO') && box4.classList.contains('playerO') && box7.classList.contains('playerO'): 
+        console.log(`player O wins`);
+        break;
+        case box2.classList.contains('playerX') && box5.classList.contains('playerX') && box8.classList.contains('playerX'): 
+        console.log(`player X wins`);
+        break; 
+        case box2.classList.contains('playerO') && box5.classList.contains('playerO') && box8.classList.contains('playerO'): 
+        console.log(`player O wins`);
+        break;
+        case box3.classList.contains('playerX') && box6.classList.contains('playerX') && box9.classList.contains('playerX'): 
+        console.log(`player X wins`);
+        break; 
+        case box3.classList.contains('playerO') && box6.classList.contains('playerO') && box9.classList.contains('playerO'): 
+        console.log(`player O wins`);
+        break;
+        case box1.classList.contains('playerX') && box5.classList.contains('playerX') && box9.classList.contains('playerX'): 
+        console.log(`player X wins`);
+        break; 
+        case box1.classList.contains('playerO') && box5.classList.contains('playerO') && box9.classList.contains('playerO'): 
+        console.log(`player O wins`);
+        break;
+        case box3.classList.contains('playerX') && box5.classList.contains('playerX') && box7.classList.contains('playerX'): 
+        console.log(`player X wins`);
+        break; 
+        case box3.classList.contains('playerO') && box5.classList.contains('playerO') && box7.classList.contains('playerO'): 
+        console.log(`player O wins`);
+        break;
+    }
+
 }
