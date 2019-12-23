@@ -124,6 +124,8 @@ function checkWinner() {
         case box3.classList.contains('playerO') && box5.classList.contains('playerO') && box7.classList.contains('playerO'): 
         console.log(`player O wins`);
         break;
+        default:
+            console.log('no winner')
     }
 
 }
