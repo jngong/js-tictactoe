@@ -24,6 +24,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 5rem;
 }
 
 .row1, .row2 {
@@ -36,11 +37,19 @@ body {
 
 #reset {
     padding: 10px 40px;
-    margin-top: 10px;
-    font-size: 16px;
+    margin: 10px 0 100px 0;
+    font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: bold;
-    background-color: greenyellow;
+    background-color: #F5F567;
     border: none;
+}
+
+.playerX {
+    background-color: #67F5F5;
+}
+
+.playerO {
+    background-color: #F567F5;
 }
