@@ -12,6 +12,9 @@ A player wins if/when:
 If all boxes are clicked and none of the above apply, then there is no winner
 */
 
+let playerX = true;
+let playerO = false;
+
 let squares = document.querySelectorAll('.square')
 console.log(squares)
 
@@ -20,5 +23,15 @@ squares.forEach(square => {
 })
 
 function assignClass() {
-    console.log(`adding class`)
+    if (playerX) {
+        this.classList.add('playerX')
+        this.innerHTML = 'X'
+        playerX = false
+        playerO = true
+    } else if (playerO) {
+        this.classList.add('playerO')
+        this.innerHTML = 'O'
+        playerO = false
+        playerX = true
+    }    
 }
