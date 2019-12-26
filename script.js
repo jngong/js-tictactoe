@@ -18,8 +18,8 @@ If all boxes are clicked and none of the above apply, then there is no winner.
 */
 
 //define all variables - track players, number of moves, access DOM elements
-let playerX = true;
-let playerO = false;
+let player1 = true;
+let player2 = false;
 let moves = 9;
 
 let squares = document.querySelectorAll('.square')
@@ -40,94 +40,96 @@ let box9 = document.querySelector('#box9')
 
 
 function newGame() {
-    playerX = true
-    playerO = false
+    player1 = true
+    player2 = false
     moves = 9
     
     squares.forEach(square => {
         square.classList.remove('playerX')
-        square.classList.remove('playerO')
+        square.classList.remove('playerY')
         square.innerHTML = ''
         square.addEventListener('click', assignClass)
     })
     
     function assignClass() {
-        if (playerX && moves > 0) {
+        if (player1 === true && player2 === false) {
             this.classList.add('playerX')
             this.innerHTML = 'X'
-            playerX = false
-            playerO = true
+            player1 = false
+            player2 = true
             moves -= 1
-            console.log(moves)
+            console.log(`${moves} and player1: ${player1} and player2: ${player2}`)
             this.removeEventListener('click', assignClass)
-        } else if (playerO && moves > 0) {
-            this.classList.add('playerO')
+            checkWinner();
+        } else if (player2 === true && player1 === false) {
+            this.classList.add('playerY')
             this.innerHTML = 'O'
-            playerO = false
-            playerX = true
+            player2 = false
+            player1 = true
             moves -= 1
-            console.log(moves)
+            console.log(`${moves} and player1: ${player1} and player2: ${player2}`)
             this.removeEventListener('click', assignClass)
+            checkWinner();
+        } else {
+            console.log(`error: ${moves} and player1: ${player1} and player2: ${player2}`)
         }
-        console.log(`Player X: ${playerX}, Player O: ${playerO}`)    
-        checkWinner();
     }
-    console.log(`Reset. Moves: ${moves}, PlayerX: ${playerX}, PlayerO: ${playerO}`)
+    console.log(`Reset Game. Moves: ${moves}, Player1: ${player1}, Player2: ${player2}`)
 }
 
 function checkWinner() {
     switch(true) {
         case box1.classList.contains('playerX') && box2.classList.contains('playerX') && box3.classList.contains('playerX'): 
-        console.log(`player X wins`);
+        alert('Congratulations Player X! You win!');
         break; 
-        case box1.classList.contains('playerO') && box2.classList.contains('playerO') && box3.classList.contains('playerO'): 
-        console.log(`player O wins`);
+        case box1.classList.contains('playerY') && box2.classList.contains('playerY') && box3.classList.contains('playerY'): 
+        alert('Congratulations Player O! You win!');
         break;
         case box4.classList.contains('playerX') && box5.classList.contains('playerX') && box6.classList.contains('playerX'): 
-        console.log(`player X wins`);
+        alert('Congratulations Player X! You win!');
         break; 
-        case box4.classList.contains('playerO') && box5.classList.contains('playerO') && box6.classList.contains('playerO'): 
-        console.log(`player O wins`);
+        case box4.classList.contains('playerY') && box5.classList.contains('playerY') && box6.classList.contains('playerY'): 
+        alert('Congratulations Player O! You win!');
         break;
         case box7.classList.contains('playerX') && box8.classList.contains('playerX') && box9.classList.contains('playerX'): 
-        console.log(`player X wins`);
+        alert('Congratulations Player X! You win!');
         break; 
-        case box7.classList.contains('playerO') && box8.classList.contains('playerO') && box9.classList.contains('playerO'): 
-        console.log(`player O wins`);
+        case box7.classList.contains('playerY') && box8.classList.contains('playerY') && box9.classList.contains('playerY'): 
+        alert('Congratulations Player O! You win!');
         break;
         case box1.classList.contains('playerX') && box4.classList.contains('playerX') && box7.classList.contains('playerX'): 
-        console.log(`player X wins`);
+        alert('Congratulations Player X! You win!');
         break; 
-        case box1.classList.contains('playerO') && box4.classList.contains('playerO') && box7.classList.contains('playerO'): 
-        console.log(`player O wins`);
+        case box1.classList.contains('playerY') && box4.classList.contains('playerY') && box7.classList.contains('playerY'): 
+        alert('Congratulations Player O! You win!');
         break;
         case box2.classList.contains('playerX') && box5.classList.contains('playerX') && box8.classList.contains('playerX'): 
-        console.log(`player X wins`);
+        alert('Congratulations Player X! You win!');
         break; 
-        case box2.classList.contains('playerO') && box5.classList.contains('playerO') && box8.classList.contains('playerO'): 
-        console.log(`player O wins`);
+        case box2.classList.contains('playerY') && box5.classList.contains('playerY') && box8.classList.contains('playerY'): 
+        alert('Congratulations Player O! You win!');
         break;
         case box3.classList.contains('playerX') && box6.classList.contains('playerX') && box9.classList.contains('playerX'): 
-        console.log(`player X wins`);
+        alert('Congratulations Player X! You win!');
         break; 
-        case box3.classList.contains('playerO') && box6.classList.contains('playerO') && box9.classList.contains('playerO'): 
-        console.log(`player O wins`);
+        case box3.classList.contains('playerY') && box6.classList.contains('playerY') && box9.classList.contains('playerY'): 
+        alert('Congratulations Player O! You win!');
         break;
         case box1.classList.contains('playerX') && box5.classList.contains('playerX') && box9.classList.contains('playerX'): 
-        console.log(`player X wins`);
+        alert('Congratulations Player X! You win!');
         break; 
-        case box1.classList.contains('playerO') && box5.classList.contains('playerO') && box9.classList.contains('playerO'): 
-        console.log(`player O wins`);
+        case box1.classList.contains('playerY') && box5.classList.contains('playerY') && box9.classList.contains('playerY'): 
+        alert('Congratulations Player O! You win!');
         break;
         case box3.classList.contains('playerX') && box5.classList.contains('playerX') && box7.classList.contains('playerX'): 
-        console.log(`player X wins`);
+        alert('Congratulations Player X! You win!');
         break; 
-        case box3.classList.contains('playerO') && box5.classList.contains('playerO') && box7.classList.contains('playerO'): 
-        console.log(`player O wins`);
+        case box3.classList.contains('playerY') && box5.classList.contains('playerY') && box7.classList.contains('playerY'): 
+        alert('Congratulations Player O! You win!');
         break;
         default:
             if (moves === 0) {
-                console.log('no winner')
+                alert('Sorry, nobody won. Clear the board and play again.')
             }
         }
         
