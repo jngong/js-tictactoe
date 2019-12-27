@@ -31,6 +31,8 @@ console.log(reset)
 let message = document.querySelector('.message')
 console.log(message)
 
+let body = document.querySelector('body')
+
 let box1 = document.querySelector('#box1')
 let box2 = document.querySelector('#box2')
 let box3 = document.querySelector('#box3')
@@ -39,6 +41,10 @@ let box5 = document.querySelector('#box5')
 let box6 = document.querySelector('#box6')
 let box7 = document.querySelector('#box7')
 let box8 = document.querySelector('#box8')
+
+let scoreBoard = document.createElement('div')
+scoreBoard.innerHTML = ''
+body.append(scoreBoard);
 
 let totalWinsX = 0;
 let totalWinsO = 0;
@@ -70,84 +76,52 @@ function markSquare() {
 function checkWinner() {
     switch(true) {
         case box1.classList.contains('playerX') && box2.classList.contains('playerX') && box3.classList.contains('playerX'): 
-        alert('Congratulations Player X! You win!');
-        message.innerHTML = '';
-        totalWinsX++;
+        xWins();
         break; 
         case box1.classList.contains('playerY') && box2.classList.contains('playerY') && box3.classList.contains('playerY'): 
-        alert('Congratulations Player O! You win!');
-        message.innerHTML = '';
-        totalWinsO++;
+        oWins();
         break;
         case box4.classList.contains('playerX') && box5.classList.contains('playerX') && box6.classList.contains('playerX'): 
-        alert('Congratulations Player X! You win!');
-        message.innerHTML = '';
-        totalWinsX++;
+        xWins();
         break; 
         case box4.classList.contains('playerY') && box5.classList.contains('playerY') && box6.classList.contains('playerY'): 
-        alert('Congratulations Player O! You win!');
-        message.innerHTML = '';
-        totalWinsO++;
+        oWins();
         break;
         case box7.classList.contains('playerX') && box8.classList.contains('playerX') && box9.classList.contains('playerX'): 
-        alert('Congratulations Player X! You win!');
-        message.innerHTML = '';
-        totalWinsX++;
+        xWins();
         break; 
         case box7.classList.contains('playerY') && box8.classList.contains('playerY') && box9.classList.contains('playerY'): 
-        alert('Congratulations Player O! You win!');
-        message.innerHTML = '';
-        totalWinsO++;
+        oWins();
         break;
         case box1.classList.contains('playerX') && box4.classList.contains('playerX') && box7.classList.contains('playerX'): 
-        alert('Congratulations Player X! You win!');
-        message.innerHTML = '';
-        totalWinsX++;
+        xWins();
         break; 
         case box1.classList.contains('playerY') && box4.classList.contains('playerY') && box7.classList.contains('playerY'): 
-        alert('Congratulations Player O! You win!');
-        message.innerHTML = '';
-        totalWinsO++;
+        oWins();
         break;
         case box2.classList.contains('playerX') && box5.classList.contains('playerX') && box8.classList.contains('playerX'): 
-        alert('Congratulations Player X! You win!');
-        message.innerHTML = '';
-        totalWinsX++;
+        xWins();
         break; 
         case box2.classList.contains('playerY') && box5.classList.contains('playerY') && box8.classList.contains('playerY'): 
-        alert('Congratulations Player O! You win!');
-        message.innerHTML = '';
-        totalWinsO++;
+        oWins();
         break;
         case box3.classList.contains('playerX') && box6.classList.contains('playerX') && box9.classList.contains('playerX'): 
-        alert('Congratulations Player X! You win!');
-        message.innerHTML = '';
-        totalWinsX++;
+        xWins();
         break; 
         case box3.classList.contains('playerY') && box6.classList.contains('playerY') && box9.classList.contains('playerY'): 
-        alert('Congratulations Player O! You win!');
-        message.innerHTML = '';
-        totalWinsO++;
+        oWins();
         break;
         case box1.classList.contains('playerX') && box5.classList.contains('playerX') && box9.classList.contains('playerX'): 
-        alert('Congratulations Player X! You win!');
-        message.innerHTML = '';
-        totalWinsX++;
+        xWins();
         break; 
         case box1.classList.contains('playerY') && box5.classList.contains('playerY') && box9.classList.contains('playerY'): 
-        alert('Congratulations Player O! You win!');
-        message.innerHTML = '';
-        totalWinsO++;
+        oWins();
         break;
         case box3.classList.contains('playerX') && box5.classList.contains('playerX') && box7.classList.contains('playerX'): 
-        alert('Congratulations Player X! You win!');
-        message.innerHTML = '';
-        totalWinsX++;
+        xWins();
         break; 
         case box3.classList.contains('playerY') && box5.classList.contains('playerY') && box7.classList.contains('playerY'): 
-        alert('Congratulations Player O! You win!');
-        message.innerHTML = '';
-        totalWinsO++;
+        oWins();
         break;
         default:
             if (moves === 0) {
@@ -155,8 +129,25 @@ function checkWinner() {
                 message.innerHTML = '';
             }
     }
+}
+
+function displayScore() {
+    message.innerHTML = ''
+    scoreBoard.innerHTML = ''
+    scoreBoard.innerHTML = `Player X Wins: ${totalWinsX} &mdash; &mdash; &mdash; Player O Wins: ${totalWinsO}.`
     console.log(`player X wins: ${totalWinsX}, player O wins: ${totalWinsO}`)
-        
+}
+
+function xWins() {
+    totalWinsX++
+    alert('Congratulations Player X. You win!');
+    displayScore()
+}
+
+function oWins() {
+    totalWinsO++
+    alert('Congratulations Player O. You win!');
+    displayScore()
 }
 
 function newGame() {
@@ -165,7 +156,7 @@ function newGame() {
     squares.forEach(square => {
         square.addEventListener('click', markSquare)
     })
-    
+
 }
 
 function resetGame() {
@@ -184,7 +175,7 @@ function resetGame() {
     newGame();
 }
 
-    reset.addEventListener('click', resetGame)
+reset.addEventListener('click', resetGame)
 
-    newGame();
+newGame();
 
