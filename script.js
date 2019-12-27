@@ -142,16 +142,25 @@ function xWins() {
     totalWinsX++
     alert('Congratulations Player X. You win!');
     displayScore()
+    player1 = true
+    player2 = false
 }
 
 function oWins() {
     totalWinsO++
     alert('Congratulations Player O. You win!');
     displayScore()
+    player1 = false
+    player2 = true
 }
 
 function newGame() {
-    message.innerHTML = 'Player 1 goes first. Choose a square for X.'
+
+    if (player1 === true) {
+        message.innerHTML = 'Player 1 goes first. Choose a square for X.'
+    } else {
+        message.innerHTML = 'Player 2 goes first. Choose a square for O'
+    }  
     
     squares.forEach(square => {
         square.addEventListener('click', markSquare)
@@ -160,8 +169,6 @@ function newGame() {
 }
 
 function resetGame() {
-    player1 = true
-    player2 = false
     moves = 9
 
     squares.forEach(square => {
