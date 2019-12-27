@@ -11,27 +11,27 @@ body {
 }
 
 h1 {
-    margin: 5px 0;
+    margin: 0;
     text-transform: uppercase;
     letter-spacing: 5px;
 }
 
 .message {
-    margin: 5px 0;
+    margin: 0;
 }
 
 .gameboard {
     display: flex;
     flex-flow: row wrap;
-    width: 602px;
-    margin: 25px auto;
+    width: 572px;
+    margin: 10px auto;
     border: 1px solid gray;
 }
 
 
 .square {
-    height: 200px;
-    width: 200px;
+    height: 190px;
+    width: 190px;
     display: flex;
     justify-content: center;
     align-items: center;
